@@ -1,4 +1,4 @@
-# YORO
+# ERCAD
 This is the official Code of ERCAD.
 
 The requirements.txt provides the environments of our model.
