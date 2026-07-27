@@ -1,93 +1,102 @@
 # ERCAD
 
-Official implementation of **ERCAD: An Embedding Replay Method for Continual Anomaly Detection and Segmentation**.
+Official implementation of:
 
-This repository provides the source code for ERCAD, a continual anomaly detection and segmentation framework based on embedding replay. The proposed method aims to address the catastrophic forgetting problem in continual anomaly detection scenarios.
+**ERCAD: An Embedding Replay Method for Continual Anomaly Detection and Segmentation**
 
-## Installation
+This repository contains the official PyTorch implementation of ERCAD for continual anomaly detection and segmentation.
 
-The required Python environment is provided in `requirements.txt`.
+## 📌 Overview
 
-You can install the required dependencies using:
+ERCAD is an embedding replay based framework designed to alleviate catastrophic forgetting in continual anomaly detection scenarios.
+
+## 🔧 Installation
+
+Clone this repository:
+
+```bash
+git clone https://github.com/xxx/ERCAD.git
+cd ERCAD
+```
+
+Install the required dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Datasets
+## 📂 Dataset Preparation
 
-ERCAD is evaluated on two widely used industrial anomaly detection benchmarks:
+ERCAD is evaluated on two industrial anomaly detection benchmarks:
 
-- **MVTec AD**
-- **VisA**
+- [MVTec AD](https://www.mvtec.com/company/research/datasets/mvtec-ad)
+- [VisA](https://github.com/amazon-science/spot-diff)
 
-### MVTec AD Dataset
+### MVTec AD
 
-MVTec AD is a widely used benchmark dataset for industrial anomaly detection and segmentation. It contains 15 categories of industrial objects and textures, including normal samples for training and various types of defective samples for testing. Pixel-level anomaly masks are provided for defective samples, enabling both image-level anomaly detection and pixel-level anomaly segmentation evaluation.
+Download the MVTec AD dataset and place it as follows:
 
-The dataset can be downloaded from:
-
-https://www.mvtec.com/company/research/datasets/mvtec-ad
-
-After downloading, please keep the original MVTec AD dataset structure:
-
-```text
-MVTec_AD/
-├── bottle/
-│   ├── train/
-│   ├── test/
-│   └── ground_truth/
-├── cable/
-├── capsule/
-├── carpet/
-└── ...
+```
+datasets/
+└── MVTec_AD/
+    ├── bottle/
+    ├── cable/
+    ├── capsule/
+    ├── carpet/
+    └── ...
 ```
 
-Please configure the dataset path in `run_MVTec.py` before training.
+The dataset path should be specified in:
 
-### VisA Dataset
-
-VisA is a large-scale industrial anomaly detection dataset containing 12 object categories. It provides normal and anomalous images with pixel-level annotations for anomaly segmentation.
-
-The dataset can be downloaded from:
-
-https://github.com/amazon-science/spot-diff
-
-After downloading, organize the dataset as follows:
-
-```text
-VisA/
-├── candle/
-├── capsules/
-├── cashew/
-├── chewinggum/
-└── ...
+```
+run_MVTec.py
 ```
 
-Please configure the dataset path in `run_Visa.py` before training.
+before training.
 
-## Training
+### VisA
 
-ERCAD is designed for continual anomaly detection and segmentation. During training, anomaly detection tasks are learned sequentially. The embedding replay strategy is adopted to preserve previously learned anomaly representations while learning new tasks.
+Download the VisA dataset and organize it as:
 
-### Training on MVTec AD
+```
+datasets/
+└── VisA/
+    ├── candle/
+    ├── capsules/
+    ├── cashew/
+    ├── chewinggum/
+    └── ...
+```
 
-To train ERCAD on the MVTec AD dataset, run:
+The dataset path should be specified in:
+
+```
+run_Visa.py
+```
+
+before training.
+
+## 🚀 Training
+
+### Train on MVTec AD
+
+Run:
 
 ```bash
 python run_MVTec.py
 ```
 
-The training script will:
+The script will automatically perform:
 
-1. Load the MVTec AD dataset.
-2. Construct the continual anomaly detection training process.
-3. Optimize the ERCAD model.
-4. Evaluate anomaly detection and segmentation performance.
+- dataset loading
+- continual anomaly detection training
+- model optimization
+- anomaly detection and segmentation evaluation
 
-### Training on VisA
 
-To train ERCAD on the VisA dataset, run:
+### Train on VisA
+
+Run:
 
 ```bash
 python run_Visa.py
@@ -95,9 +104,20 @@ python run_Visa.py
 
 The training procedure follows the same continual learning setting as MVTec AD.
 
-## Citation
+## 📊 Evaluation
 
-If you find this work useful for your research, please consider citing:
+ERCAD evaluates both image-level anomaly detection and pixel-level anomaly segmentation.
+
+The commonly used metrics include:
+
+- Image-level AUROC
+- Pixel-level AUROC
+- PRO score
+
+
+## 📄 Citation
+
+If you find this work useful, please cite:
 
 ```bibtex
 @article{deng_ercad_2026,
@@ -110,3 +130,7 @@ If you find this work useful for your research, please consider citing:
 	pages = {114507}
 }
 ```
+
+## 📬 Contact
+
+For questions or discussions, please contact the authors.
