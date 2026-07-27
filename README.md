@@ -1,27 +1,27 @@
 # ERCAD
-This is the official Code of ERCAD.
 
-The requirements.txt provides the environments of our model.
+Official implementation of **ERCAD: An Embedding Replay Method for Continual Anomaly Detection and Segmentation**.
 
-You can use the run_MVTec.py to train a model on the MVTec AD dataset.
+This repository provides the source code for ERCAD, a continual anomaly detection and segmentation framework based on embedding replay. The proposed method aims to address the catastrophic forgetting problem in continual anomaly detection scenarios.
 
-You can use the run_Visa.py to train a model on the VisA dataset.
+## Installation
 
-# Citation
+The required Python environment is provided in `requirements.txt`.
+
+You can create the environment using:
+
+```bash
+pip install -r requirements.txt
 
 @article{deng_ercad_2026,
 	title = {{ERCAD}: an embedding replay method for continual anomaly detection and segmentation},
 	copyright = {All rights reserved},
 	issn = {00313203},
 	shorttitle = {Ercad},
-	url = {https://linkinghub.elsevier.com/retrieve/pii/S0031320326014718},
 	doi = {10.1016/j.patcog.2026.114507},
-	language = {en},
-	urldate = {2026-07-26},
-	journal = {Pattern Recognit.},
+	journal = {Pattern Recognition},
 	author = {Deng, Zhipeng and Yang, Gen and Tu, Bing and Liu, Yong and Man, Junfeng},
 	month = jul,
 	year = {2026},
-	pages = {114507},
-	}
-
+	pages = {114507}
+}
