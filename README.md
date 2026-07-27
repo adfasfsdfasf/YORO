@@ -8,26 +8,30 @@ This repository provides the source code for ERCAD, a continual anomaly detectio
 
 The required Python environment is provided in `requirements.txt`.
 
-You can create the environment using:
+You can install the required dependencies using:
 
 ```bash
 pip install -r requirements.txt
-Datasets
+```
+
+## Datasets
 
 ERCAD is evaluated on two widely used industrial anomaly detection benchmarks:
 
-MVTec AD
-VisA
-MVTec AD Dataset
+- **MVTec AD**
+- **VisA**
 
-MVTec AD is a widely used benchmark dataset for industrial anomaly detection and segmentation. It contains 15 categories of industrial objects and textures, including normal samples for training and various types of defective samples for testing. Pixel-level anomaly masks are provided for defective samples, enabling both image-level detection and pixel-level segmentation evaluation.
+### MVTec AD Dataset
+
+MVTec AD is a widely used benchmark dataset for industrial anomaly detection and segmentation. It contains 15 categories of industrial objects and textures, including normal samples for training and various types of defective samples for testing. Pixel-level anomaly masks are provided for defective samples, enabling both image-level anomaly detection and pixel-level anomaly segmentation evaluation.
 
 The dataset can be downloaded from:
 
 https://www.mvtec.com/company/research/datasets/mvtec-ad
 
-After downloading, please place the dataset according to the original MVTec AD directory structure:
+After downloading, please keep the original MVTec AD dataset structure:
 
+```text
 MVTec_AD/
 ├── bottle/
 │   ├── train/
@@ -37,10 +41,11 @@ MVTec_AD/
 ├── capsule/
 ├── carpet/
 └── ...
+```
 
-The dataset path should be configured in run_MVTec.py before training.
+Please configure the dataset path in `run_MVTec.py` before training.
 
-VisA Dataset
+### VisA Dataset
 
 VisA is a large-scale industrial anomaly detection dataset containing 12 object categories. It provides normal and anomalous images with pixel-level annotations for anomaly segmentation.
 
@@ -48,45 +53,55 @@ The dataset can be downloaded from:
 
 https://github.com/amazon-science/spot-diff
 
-The dataset should be organized as:
+After downloading, organize the dataset as follows:
 
+```text
 VisA/
 ├── candle/
 ├── capsules/
 ├── cashew/
 ├── chewinggum/
 └── ...
+```
 
-The dataset path should be configured in run_Visa.py before training.
+Please configure the dataset path in `run_Visa.py` before training.
 
-Training
+## Training
 
-ERCAD is designed for continual anomaly detection and segmentation. During training, anomaly detection tasks are learned sequentially. The embedding replay strategy is adopted to preserve previously learned anomaly knowledge while learning new tasks.
+ERCAD is designed for continual anomaly detection and segmentation. During training, anomaly detection tasks are learned sequentially. The embedding replay strategy is adopted to preserve previously learned anomaly representations while learning new tasks.
 
-Training on MVTec AD
+### Training on MVTec AD
 
 To train ERCAD on the MVTec AD dataset, run:
 
+```bash
 python run_MVTec.py
+```
 
 The training script will:
 
-Load the MVTec AD dataset.
-Construct the continual anomaly detection training process.
-Optimize the ERCAD model.
-Evaluate anomaly detection and segmentation performance.
-Training on VisA
+1. Load the MVTec AD dataset.
+2. Construct the continual anomaly detection training process.
+3. Optimize the ERCAD model.
+4. Evaluate anomaly detection and segmentation performance.
+
+### Training on VisA
 
 To train ERCAD on the VisA dataset, run:
 
+```bash
 python run_Visa.py
+```
 
 The training procedure follows the same continual learning setting as MVTec AD.
+
+## Citation
+
+If you find this work useful for your research, please consider citing:
+
+```bibtex
 @article{deng_ercad_2026,
 	title = {{ERCAD}: an embedding replay method for continual anomaly detection and segmentation},
-	copyright = {All rights reserved},
-	issn = {00313203},
-	shorttitle = {Ercad},
 	doi = {10.1016/j.patcog.2026.114507},
 	journal = {Pattern Recognition},
 	author = {Deng, Zhipeng and Yang, Gen and Tu, Bing and Liu, Yong and Man, Junfeng},
@@ -94,3 +109,4 @@ The training procedure follows the same continual learning setting as MVTec AD.
 	year = {2026},
 	pages = {114507}
 }
+```
